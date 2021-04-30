@@ -158,20 +158,20 @@ $BypassDefenderPaths = @('C:\_ByPassDefender')
 
 # some manual installs: vscode-insiders and typora
 $ManualDownloadInstall = @{
-    # 'vscodeinsiders.exe' = 'https://go.microsoft.com/fwlink/?Linkid=852155'
+    'vscodeinsiders.exe' = 'https://go.microsoft.com/fwlink/?Linkid=852155'
    # 'vscode.exe' = 'https://go.microsoft.com/fwlink/?linkid=852157'
-    # 'typora-setup-x64.exe' = 'https://typora.io/windows/typora-setup-x64.exe'
-    # 'skypeonlinepowershell.exe' = 'https://download.microsoft.com/download/2/0/5/2050B39B-4DA5-48E0-B768-583533B42C3B/SkypeOnlinePowershell.exe'
+    'typora-setup-x64.exe' = 'https://typora.io/windows/typora-setup-x64.exe'
+    'skypeonlinepowershell.exe' = 'https://download.microsoft.com/download/2/0/5/2050B39B-4DA5-48E0-B768-583533B42C3B/SkypeOnlinePowershell.exe'
 }
 
 # Releases based github packages to download and install. I include Keeweb and the Hack font I love so dearly
 $GithubReleasesPackages = @{
-    # 'keeweb/keeweb' = "keeweb*win.x64.exe"
-    # 'source-foundry/Hack-windows-installer' = "HackWindowsInstaller.exe"
+    'keeweb/keeweb' = "keeweb*win.x64.exe"
+    'source-foundry/Hack-windows-installer' = "HackWindowsInstaller.exe"
 }
 
 # Hashicorp packages
-$HashicorpPackages = @()
+$HashicorpPackages = @('vagrant','terraform','vault')
 
 # Change for whatever platform you want to download for
 $HashicorpOS = 'windows'
@@ -181,35 +181,35 @@ $HashicorpArch = "amd64|x86_64"
 
 # PowerShell Modules to install
 $ModulesToBeInstalled = @(
-    # 'Azure',
-    # 'AzureAD',
-    # 'AzureADPreview',
-    # 'AzureRM',
-    # 'Configuration',
-    # 'CredentialManager',
-    # 'dbatools',
-    # 'EZOut',
-    # 'HistoryPx',
-    # 'InvokeBuild',
-    # 'PackageManagement',
-    # 'Pansies',
-    # 'platyPS',
-    # 'posh-git',
-    # 'PowerLine',
-    # 'PowerShellGet',
-    # 'powershell-yaml',
-    # 'psake',
-    # 'PSCodeHealth',
-    # 'PSDecode',
-    # 'PSDepend',
-    # 'PSGit',
-    # 'PSGraph',
-    # 'psmsgraph',
-    # 'PSScriptAnalyzer',
-    # 'SharePointPnPPowerShellOnline',
-    # 'SnippetPx',
-    # 'WinSCP',
-    # 'OhMyPsh'
+    'Azure',
+    'AzureAD',
+    'AzureADPreview',
+    'AzureRM',
+    'Configuration',
+    'CredentialManager',
+    'dbatools',
+    'EZOut',
+    'HistoryPx',
+    'InvokeBuild',
+    'PackageManagement',
+    'Pansies',
+    'platyPS',
+    'posh-git',
+    'PowerLine',
+    'PowerShellGet',
+    'powershell-yaml',
+    'psake',
+    'PSCodeHealth',
+    'PSDecode',
+    'PSDepend',
+    'PSGit',
+    'PSGraph',
+    'psmsgraph',
+    'PSScriptAnalyzer',
+    'SharePointPnPPowerShellOnline',
+    'SnippetPx',
+    'WinSCP',
+    'OhMyPsh'
 )
 
 # Chocolatey packages to install
@@ -218,64 +218,64 @@ $ChocoInstalls = @(
     '7zip.commandline',
     'cmder',
     'curl',
-    # 'Cygwin',
-    # 'f.lux'
-    # 'dotnet4.7.1',
-    # 'dropbox',
-    # 'Firefox',
-    # 'foxitreader',
-    # 'git',
-    # 'git-credential-manager-for-windows',
-    # 'git-credential-winstore',
-    # 'gitextensions',
-    # 'GoogleChrome',
-    # 'sysinternals'
-    # 'hub',
+    'Cygwin',
+    'f.lux'
+    'dotnet4.7.1',
+    'dropbox',
+    'Firefox',
+    'foxitreader',
+    'git',
+    'git-credential-manager-for-windows',
+    'git-credential-winstore',
+    'gitextensions',
+    'GoogleChrome',
+    'sysinternals'
+    'hub',
     'keypirinha',
-    # 'nano',
-    # 'nmap',
-    # 'notepadplusplus',
-    # 'nuget.commandline',
-    # 'paint.net',
-    # 'PDFCreator',
-    # 'procexp',
-    # 'putty',
-    # 'python',
-    # 'python3',
-    # 'rvtools',
-    # 'sharex',
-    # 'sql-server-management-studio',
-    # 'superputty',
-    # 'terminals',
-    # 'toolsroot',
-    # 'virtualbox',
-    # 'VirtualBox.ExtensionPack',
-    # 'VirtualCloneDrive',
+    'nano',
+    'nmap',
+    'notepadplusplus',
+    'nuget.commandline',
+    'paint.net',
+    'PDFCreator',
+    'procexp',
+    'putty',
+    'python',
+    'python3',
+    'rvtools',
+    'sharex',
+    'sql-server-management-studio',
+    'superputty',
+    'terminals',
+    'toolsroot',
+    'virtualbox',
+    'VirtualBox.ExtensionPack',
+    'VirtualCloneDrive',
     'vlc',
     'win32diskimager',
     'windirstat',
     'winscp',
-    # 'wireshark',
-    # 'yumi',
+    'wireshark',
+    'yumi',
     'visualstudiocode'
 )
 
 # Visual Studio Code extensions to install (both code-insiders and code if available)
 $VSCodeExtensions = @(
-    # 'adamvoss.yaml',
-    # 'bierner.markdown-preview-github-styles',
-    # 'donjayamanne.githistory',
-    # 'DotJoshJohnson.xml',
-    # 'eriklynd.json-tools',
-    # 'formulahendry.azure-storage-explorer',
-    # 'ms-mssql.mssql',
-    # 'ms-python.python',
-    # 'ms-vscode.azure-account',
-    'ms-vscode.PowerShell'
-    # 'msazurermtools.azurerm-vscode-tools',
-    # 'robertohuertasm.vscode-icons',
-    # 'samcogan.arm-snippets',
-    # 'Shan.code-settings-sync'
+    'adamvoss.yaml',
+    'bierner.markdown-preview-github-styles',
+    'donjayamanne.githistory',
+    'DotJoshJohnson.xml',
+    'eriklynd.json-tools',
+    'formulahendry.azure-storage-explorer',
+    'ms-mssql.mssql',
+    'ms-python.python',
+    'ms-vscode.azure-account',
+    'ms-vscode.PowerShell',
+    'msazurermtools.azurerm-vscode-tools',
+    'robertohuertasm.vscode-icons',
+    'samcogan.arm-snippets',
+    'Shan.code-settings-sync'
 )
 
 # Chocolatey places a bunch of crap on the desktop after installing or updating software. This flag allows
@@ -325,7 +325,7 @@ Set-ExecutionPolicy RemoteSigned Process
 '@
 
 # Install boxstarter (which installs chocolatey as well).
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('http://boxstarter.org/bootstrapper.ps1')); get-boxstarter -Force
+#Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('http://boxstarter.org/bootstrapper.ps1')); get-boxstarter -Force
 
 # Basic setup (Boxstarter stuff)
 Update-ExecutionPolicy RemoteSigned
