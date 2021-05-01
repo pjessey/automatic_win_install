@@ -22,130 +22,16 @@ to meet your own needs.
 #>
 
 # Boxstarter options
-$Boxstarter.RebootOk=$false # Allow reboots?
-$Boxstarter.NoPassword=$false # Is this a machine with no login password?
-$Boxstarter.AutoLogin=$false # Save my password securely and auto-login after a reboot
+$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.NoPassword=$true # Is this a machine with no login password?
+$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
+
+$ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
+$configDir = $ScriptDir+"\configuration"
 
 # All of the configuration tasks that will be run.
-$Configuration = @'
-[
-    "DisableWiFiSense",
-    "DisableWebSearch",
-    "DisableAppSuggestions",
-    "DisableBackgroundApps",
-    "DisableLockScreenSpotlight",
-    "DisableLocationTracking",
-    "DisableMapUpdates",
-    "DisableFeedback",
-    "DisableAdvertisingID",
-    "DisableCortana",
-    "DisableErrorReporting",
-    "SetP2PUpdateLocal",
-    "DisableAutoLogger",
-    "DisableDiagTrack",
-    "DisableWAPPush",
-    "DisableAdminShares",
-    "DisableSMB1",
-    "DisableNetDevicesAutoInst",
-    "DisableCtrldFolderAccess",
-    "DisableAutoplay",
-    "DisableAutorun",
-    "DisableSleepTimeout",
-    "DisableUpdateRestart",
-    "DisableHomeGroups",
-    "DisableSharedExperiences",
-    "DisableRemoteAssistance",
-    "DisableRemoteDesktop",
-    "DisableActionCenter",
-    "HideNetworkFromLockScreen",
-    "HideShutdownFromLockScreen",
-    "DisableStickyKeys",
-    "ShowTaskManagerDetails",
-    "ShowFileOperationsDetails",
-    "HideTaskbarSearchBox",
-    "ShowTaskView",
-    "HideTaskbarTitles",
-    "HideTaskbarPeopleIcon",
-    "DockTaskbarLeft",
-    "ShowTrayIcons",
-    "ShowKnownExtensions",
-    "ShowHiddenFiles",
-    "HideSyncNotifications",
-    "HideRecentShortcuts",
-    "SetExplorerThisPC",
-    "ShowThisPCOnDesktop",
-    "HideDocumentsFromExplorer",
-    "Hide3DObjectsFromThisPC",
-    "Hide3DObjectsFromExplorer",
-    "SetControlPanelViewIcons",
-    "SetVisualFXPerformance",
-    "UninstallMsftBloat",
-    "UninstallThirdPartyBloat",
-    "DisableXboxFeatures",
-    "DisableAdobeFlash",
-    "AddPhotoViewerOpenWith",
-    "DisableSearchAppInStore",
-    "DisableWiFiSense",
-    "DisableWebSearch",
-    "DisableAppSuggestions",
-    "DisableBackgroundApps",
-    "DisableLockScreenSpotlight",
-    "DisableLocationTracking",
-    "DisableMapUpdates",
-    "DisableFeedback",
-    "DisableAdvertisingID",
-    "DisableCortana",
-    "DisableErrorReporting",
-    "SetP2PUpdateLocal",
-    "DisableAutoLogger",
-    "DisableDiagTrack",
-    "DisableWAPPush",
-    "DisableAdminShares",
-    "DisableSMB1",
-    "DisableNetDevicesAutoInst",
-    "EnableCtrldFolderAccess",
-    "DisableUpdateRestart",
-    "EnableUpdateScheduleRestart",
-    "DisableRemoteAssistance",
-    "DisableRemoteDesktop",
-    "DisableAutoplay",
-    "DisableAutorun",
-    "DisableHomeGroups",
-    "DisableSharedExperiences",
-    "DisableActionCenter",
-    "DisableStickyKeys",
-    "ShowTaskManagerDetails",
-    "ShowFileOperationsDetails",
-    "SetControlPanelViewIcons",
-    "SetVisualFXAppearance",
-    "HideNetworkFromLockScreen",
-    "HideShutdownFromLockScreen",
-    "HideTaskbarSearchBox",
-    "HideTaskView",
-    "ShowSmallTaskbarIcons",
-    "HideTaskbarPeopleIcon",
-    "ShowTrayIcons",
-    "ShowKnownExtensions",
-    "ShowHiddenFiles",
-    "SetExplorerThisPC",
-    "HideDocumentsFromExplorer",
-    "Hide3DObjectsFromExplorer",
-    "HideSyncNotifications",
-    "HideRecentShortcuts",
-    "ShowThisPCOnDesktop",
-    "Hide3DObjectsFromThisPC",
-    "UninstallMsftBloat",
-    "UninstallThirdPartyBloat",
-    "DisableXboxFeatures",
-    "DisableAdobeFlash",
-    "SetPhotoViewerAssociation",
-    "AddPhotoViewerOpenWith",
-    "DisableSearchAppInStore",
-    "UnpinStartMenuTiles",    
-    "RemoveDefaultPrinters",
-    "EnableAutoHideTaskbar"
-]
-'@
+
+. $configDir\configuration.ps1
 
 # Downloads of non-chocolatey installed apps will go here (within system root)
 $UtilDownloadPath = join-path $env:systemdrive 'Utilities\Downloads'
@@ -157,18 +43,10 @@ $UtilBinPath = join-path $env:systemdrive 'Utilities\bin'
 $BypassDefenderPaths = @('C:\_ByPassDefender')
 
 # some manual installs: vscode-insiders and typora
-$ManualDownloadInstall = @{
-    # 'vscodeinsiders.exe' = 'https://go.microsoft.com/fwlink/?Linkid=852155'
-   # 'vscode.exe' = 'https://go.microsoft.com/fwlink/?linkid=852157'
-    # 'typora-setup-x64.exe' = 'https://typora.io/windows/typora-setup-x64.exe'
-    # 'skypeonlinepowershell.exe' = 'https://download.microsoft.com/download/2/0/5/2050B39B-4DA5-48E0-B768-583533B42C3B/SkypeOnlinePowershell.exe'
-}
+. $configDir\manual.ps1
 
 # Releases based github packages to download and install. I include Keeweb and the Hack font I love so dearly
-$GithubReleasesPackages = @{
-    # 'keeweb/keeweb' = "keeweb*win.x64.exe"
-    # 'source-foundry/Hack-windows-installer' = "HackWindowsInstaller.exe"
-}
+. $configDir\github.ps1
 
 # Hashicorp packages
 $HashicorpPackages = @()
@@ -180,103 +58,13 @@ $HashicorpOS = 'windows'
 $HashicorpArch = "amd64|x86_64"
 
 # PowerShell Modules to install
-$ModulesToBeInstalled = @(
-    # 'Azure',
-    # 'AzureAD',
-    # 'AzureADPreview',
-    # 'AzureRM',
-    # 'Configuration',
-    # 'CredentialManager',
-    # 'dbatools',
-    # 'EZOut',
-    # 'HistoryPx',
-    # 'InvokeBuild',
-    # 'PackageManagement',
-    # 'Pansies',
-    # 'platyPS',
-    # 'posh-git',
-    # 'PowerLine',
-    # 'PowerShellGet',
-    # 'powershell-yaml',
-    # 'psake',
-    # 'PSCodeHealth',
-    # 'PSDecode',
-    # 'PSDepend',
-    # 'PSGit',
-    # 'PSGraph',
-    # 'psmsgraph',
-    # 'PSScriptAnalyzer',
-    # 'SharePointPnPPowerShellOnline',
-    # 'SnippetPx',
-    # 'WinSCP',
-    # 'OhMyPsh'
-)
+. $configDir\powershell.ps1
 
 # Chocolatey packages to install
-$ChocoInstalls = @(
-    '7zip',
-    '7zip.commandline',
-    'cmder',
-    'curl',
-    # 'Cygwin',
-    # 'f.lux'
-    # 'dotnet4.7.1',
-    # 'dropbox',
-    # 'Firefox',
-    # 'foxitreader',
-    # 'git',
-    # 'git-credential-manager-for-windows',
-    # 'git-credential-winstore',
-    # 'gitextensions',
-    # 'GoogleChrome',
-    # 'sysinternals'
-    # 'hub',
-    'keypirinha',
-    # 'nano',
-    # 'nmap',
-    # 'notepadplusplus',
-    # 'nuget.commandline',
-    # 'paint.net',
-    # 'PDFCreator',
-    # 'procexp',
-    # 'putty',
-    # 'python',
-    # 'python3',
-    # 'rvtools',
-    # 'sharex',
-    # 'sql-server-management-studio',
-    # 'superputty',
-    # 'terminals',
-    # 'toolsroot',
-    # 'virtualbox',
-    # 'VirtualBox.ExtensionPack',
-    # 'VirtualCloneDrive',
-    'vlc',
-    'win32diskimager',
-    'windirstat',
-    'winscp',
-    # 'wireshark',
-    # 'yumi',
-    'visualstudiocode'
-)
+. $configDir\choco.ps1
 
 # Visual Studio Code extensions to install (both code-insiders and code if available)
-$VSCodeExtensions = @(
-    # 'adamvoss.yaml',
-    # 'bierner.markdown-preview-github-styles',
-    # 'donjayamanne.githistory',
-    # 'DotJoshJohnson.xml',
-    # 'eriklynd.json-tools',
-    # 'formulahendry.azure-storage-explorer',
-    # 'ms-mssql.mssql',
-    # 'ms-python.python',
-    # 'ms-vscode.azure-account',
-    'ms-vscode.PowerShell'
-    # 'msazurermtools.azurerm-vscode-tools',
-    # 'robertohuertasm.vscode-icons',
-    # 'samcogan.arm-snippets',
-    # 'Shan.code-settings-sync'
-)
+. $configDir\vscode.ps1
 
 # Chocolatey places a bunch of crap on the desktop after installing or updating software. This flag allows
 #  you to clean that up (Note: this will move *.lnk files from the Public user profile desktop and your own 
