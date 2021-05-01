@@ -171,7 +171,8 @@ $GithubReleasesPackages = @{
 }
 
 # Hashicorp packages
-$HashicorpPackages = @('vagrant','terraform','vault')
+#$HashicorpPackages = @('vagrant','terraform','vault')
+$HashicorpPackages = @()
 
 # Change for whatever platform you want to download for
 $HashicorpOS = 'windows'
@@ -181,35 +182,35 @@ $HashicorpArch = "amd64|x86_64"
 
 # PowerShell Modules to install
 $ModulesToBeInstalled = @(
-    'Azure',
-    'AzureAD',
-    'AzureADPreview',
-    'AzureRM',
+    # 'Azure',
+    # 'AzureAD',
+    # 'AzureADPreview',
+    # 'AzureRM',
+    # 'EZOut',
+    # 'HistoryPx',
+    # 'InvokeBuild',
+    # 'PackageManagement',
+    # 'Pansies',
+    # 'platyPS',
+    # 'posh-git',
+    # 'PowerLine',
+    # 'PowerShellGet',
+    # 'powershell-yaml',
+    # 'psake',
+    # 'PSCodeHealth',
+    # 'PSDecode',
+    # 'PSDepend',
+    # 'PSGit',
+    # 'PSGraph',
+    # 'psmsgraph',
+    # 'PSScriptAnalyzer',
+    # 'SharePointPnPPowerShellOnline',
+    # 'SnippetPx',
+    # 'WinSCP',
+    # 'OhMyPsh',
     'Configuration',
     'CredentialManager',
-    'dbatools',
-    'EZOut',
-    'HistoryPx',
-    'InvokeBuild',
-    'PackageManagement',
-    'Pansies',
-    'platyPS',
-    'posh-git',
-    'PowerLine',
-    'PowerShellGet',
-    'powershell-yaml',
-    'psake',
-    'PSCodeHealth',
-    'PSDecode',
-    'PSDepend',
-    'PSGit',
-    'PSGraph',
-    'psmsgraph',
-    'PSScriptAnalyzer',
-    'SharePointPnPPowerShellOnline',
-    'SnippetPx',
-    'WinSCP',
-    'OhMyPsh'
+    'dbatools'
 )
 
 # Chocolatey packages to install
@@ -219,7 +220,7 @@ $ChocoInstalls = @(
     'cmder',
     'curl',
     'Cygwin',
-    'f.lux'
+    # 'f.lux'
     'dotnet4.7.1',
     'dropbox',
     'Firefox',
@@ -230,9 +231,9 @@ $ChocoInstalls = @(
     'gitextensions',
     'GoogleChrome',
     'sysinternals'
-    'hub',
+    # 'hub',
     'keypirinha',
-    'nano',
+    # 'nano',
     'nmap',
     'notepadplusplus',
     'nuget.commandline',
@@ -242,14 +243,14 @@ $ChocoInstalls = @(
     'putty',
     'python',
     'python3',
-    'rvtools',
+    # 'rvtools',
     'sharex',
-    'sql-server-management-studio',
-    'superputty',
+    # 'sql-server-management-studio',
+    # 'superputty',
     'terminals',
     'toolsroot',
-    'virtualbox',
-    'VirtualBox.ExtensionPack',
+    # 'virtualbox',
+    # 'VirtualBox.ExtensionPack',
     'VirtualCloneDrive',
     'vlc',
     'win32diskimager',
@@ -262,20 +263,20 @@ $ChocoInstalls = @(
 
 # Visual Studio Code extensions to install (both code-insiders and code if available)
 $VSCodeExtensions = @(
-    'adamvoss.yaml',
-    'bierner.markdown-preview-github-styles',
-    'donjayamanne.githistory',
-    'DotJoshJohnson.xml',
-    'eriklynd.json-tools',
-    'formulahendry.azure-storage-explorer',
-    'ms-mssql.mssql',
-    'ms-python.python',
-    'ms-vscode.azure-account',
-    'ms-vscode.PowerShell',
-    'msazurermtools.azurerm-vscode-tools',
-    'robertohuertasm.vscode-icons',
-    'samcogan.arm-snippets',
-    'Shan.code-settings-sync'
+    # 'adamvoss.yaml',
+    # 'bierner.markdown-preview-github-styles',
+    # 'donjayamanne.githistory',
+    # 'DotJoshJohnson.xml',
+    # 'eriklynd.json-tools',
+    # 'formulahendry.azure-storage-explorer',
+    # 'ms-mssql.mssql',
+    # 'ms-python.python',
+    # 'ms-vscode.azure-account',
+    # 'msazurermtools.azurerm-vscode-tools',
+    # 'robertohuertasm.vscode-icons',
+    # 'samcogan.arm-snippets',
+    # 'Shan.code-settings-sync',
+    'ms-vscode.PowerShell'
 )
 
 # Chocolatey places a bunch of crap on the desktop after installing or updating software. This flag allows
@@ -2704,8 +2705,8 @@ catch {
 }
 
 if ($tweaks.count -gt 0) {
-    $RunTweaks = Read-Choice -Message "Continue with the execution of $($tweaks.count) system configuration tweaks?" -Choices @('&Yes','&No')
-
+    # $RunTweaks = Read-Choice -Message "Continue with the execution of $($tweaks.count) system configuration tweaks?" -Choices @('&Yes','&No')
+    $RunTweaks = 0;
     if ($RunTweaks -eq 0) {
         # Call the desired tweak functions
         $tweaks | ForEach-Object {
