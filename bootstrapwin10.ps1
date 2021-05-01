@@ -22,9 +22,9 @@ to meet your own needs.
 #>
 
 # Boxstarter options
-$Boxstarter.RebootOk=$true # Allow reboots?
-$Boxstarter.NoPassword=$true # Is this a machine with no login password?
-$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
+$Boxstarter.RebootOk=$false # Allow reboots?
+$Boxstarter.NoPassword=$false # Is this a machine with no login password?
+$Boxstarter.AutoLogin=$false # Save my password securely and auto-login after a reboot
 
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 $configDir = $ScriptDir+"\configuration"
